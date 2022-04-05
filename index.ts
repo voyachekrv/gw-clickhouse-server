@@ -1,13 +1,17 @@
 import app from './app';
 import * as debugFactory from 'debug';
 import * as http from 'http';
+import { Debugger } from 'debug';
+import { Server } from 'http';
 
-const debug = debugFactory('gw-clickhouse-server:server');
+type NormalizedPortAlias = string | number | boolean;
+
+const debug: Debugger = debugFactory('gw-clickhouse-server:server');
 
 /**
  * Нормализация порта.
  */
-const normalizePort = (val: string) => {
+const normalizePort = (val: string): NormalizedPortAlias => {
 	const port = parseInt(val, 10);
 
 	if (isNaN(port)) {
@@ -26,18 +30,18 @@ const normalizePort = (val: string) => {
 /**
  * Получения порта из переменных окружения в Express.
  */
-const port = normalizePort(process.env.PORT || '3000');
+const port: NormalizedPortAlias = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Создание HTTP-сервера.
  */
-const server = http.createServer(app);
+const server: Server = http.createServer(app);
 
 /**
  * Обработчик события ошибки на сервере.
  */
-const onError = error => {
+const onError = (error: NodeJS.ErrnoException): void => {
 	if (error.syscall !== 'listen') {
 		throw error;
 	}
@@ -62,7 +66,7 @@ const onError = error => {
 /**
  * Обработчик события прослушивания порта на сервере.
  */
-const onListening = port => {
+const onListening = (port: string | number): void => {
 	const address = server.address();
 	const bind =
 		typeof address === 'string'
