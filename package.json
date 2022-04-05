@@ -1,6 +1,7 @@
 {
 	"name": "gw-clickhouse-server",
 	"version": "0.0.0",
+	"description": "",
 	"private": true,
 	"scripts": {
 		"build": "tsc --project ./",
@@ -10,6 +11,13 @@
 		"prettier": "prettier --write . && prettier --check .",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix ."
+	},
+	"keywords": [],
+	"author": "gw-project",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/voyachekrv/gw-clickhouse-server.git"
 	},
 	"dependencies": {
 		"cookie-parser": "~1.4.4",
