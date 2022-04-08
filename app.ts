@@ -3,9 +3,10 @@ import * as path from 'path';
 import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 import * as dotenv from 'dotenv';
+import * as requestIp from 'request-ip';
 
 import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import visitsRouter from './routes/visits';
 
 import { Express } from 'express/ts4.0';
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(requestIp.mw());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/visits', visitsRouter);
