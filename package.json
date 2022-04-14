@@ -6,12 +6,12 @@
 	"scripts": {
 		"build": "tsc --project ./",
 		"start": "ts-node ./index.ts",
-		"start:prod": "npm run build && node ./dist/index.js",
-		"start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
+		"start:prod": "cross-env IS_DEVELOPMENT=false npm run build && node ./dist/index.js",
+		"start:nodemon": "cross-env IS_DEVELOPMENT=false ./node_modules/nodemon/bin/nodemon.js",
 		"prettier": "prettier --write . && prettier --check .",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
-		"test": "jest"
+		"test": "cross-env IS_DEVELOPMENT=true jest"
 	},
 	"keywords": [],
 	"author": "gw-project",
@@ -23,6 +23,7 @@
 	"dependencies": {
 		"clickhouse": "^2.5.0",
 		"cookie-parser": "~1.4.4",
+		"cross-env": "^7.0.3",
 		"debug": "~2.6.9",
 		"dotenv": "^16.0.0",
 		"express": "~4.16.1",

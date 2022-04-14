@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 
-import { ClickHouse } from 'clickhouse';
-
-export const clickhouse: ClickHouse = new ClickHouse({
+export const ClickhouseConfig = {
 	url: process.env.DATABASE_ADDRESS || 'http://localhost',
 	port: process.env.DATABASE_PORT || 8123,
 	debug: false,
@@ -20,4 +18,4 @@ export const clickhouse: ClickHouse = new ClickHouse({
 		enable_http_compression: 0,
 		database: process.env.DATABASE_NAME
 	}
-});
+};

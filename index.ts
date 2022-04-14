@@ -10,6 +10,8 @@ const debug: Debugger = debugFactory('gw-clickhouse-server:server');
 
 /**
  * Нормализация порта.
+ * @param {string} val Значение порта
+ * @return {NormalizedPortAlias}
  */
 const normalizePort = (val: string): NormalizedPortAlias => {
 	const port = parseInt(val, 10);
@@ -40,6 +42,8 @@ const server: Server = http.createServer(app);
 
 /**
  * Обработчик события ошибки на сервере.
+ * @param {NodeJS.ErrnoException} error Ошибка
+ * @return {void}
  */
 const onError = (error: NodeJS.ErrnoException): void => {
 	if (error.syscall !== 'listen') {
@@ -65,6 +69,8 @@ const onError = (error: NodeJS.ErrnoException): void => {
 
 /**
  * Обработчик события прослушивания порта на сервере.
+ * @param {string | number} port Значение порта
+ * @return {void}
  */
 const onListening = (port: string | number): void => {
 	const address = server.address();

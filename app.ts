@@ -12,6 +12,9 @@ import { Express } from 'express/ts4.0';
 
 dotenv.config();
 
+/**
+ *  Инициализация Express-приложения
+ */
 export const app: Express = express();
 
 app.use(logger('dev'));
