@@ -4,6 +4,7 @@ import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 import * as dotenv from 'dotenv';
 import * as requestIp from 'request-ip';
+import * as cors from 'cors';
 
 import indexRouter from './routes/index';
 import visitsRouter from './routes/visits';
@@ -17,6 +18,7 @@ dotenv.config();
  */
 export const app: Express = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
