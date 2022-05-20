@@ -36,22 +36,42 @@ export class QueryParamCollector {
 		}
 	}
 
+	/**
+	 * Список параметров, задаваемых через ключевое слово WHERE
+	 * @type {string[]}
+	 */
 	public getWhere(): string[] {
 		return this.where;
 	}
 
+	/**
+	 * Параметр, по которому производится сортировка
+	 * @type {string[]}
+	 */
 	public getOrderBy(): string {
 		return this.orderBy;
 	}
 
+	/**
+	 * Направление сортировки
+	 * @type {AscDescAlias}
+	 */
 	public getDirection(): AscDescAlias {
 		return this.direction;
 	}
 
+	/**
+	 * Лимит количества записей
+	 * @type {number}
+	 */
 	public getLimit(): number {
 		return this.limit;
 	}
 
+	/**
+	 * Пропуск количества записей
+	 * @type {number}
+	 */
 	public getOffset(): number {
 		return this.offset;
 	}
